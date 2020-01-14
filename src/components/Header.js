@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 const Header = styled.header`
   position: fixed;
@@ -22,6 +22,9 @@ const Ul = styled.ul`
 
 const Li = styled.li`
   width: 80px;
+  border-bottom: 3px solid
+    ${props => (props.current ? '#3498db' : 'transparent')};
+  transition: border-bottom 0.5s ease-in-out;
 `;
 
 const SLink = styled(Link)`
@@ -31,18 +34,18 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-export default () => (
+export default withRouter(({ location: { pathname } }) => (
   <Header>
     <Ul>
-      <Li>
+      <Li current={pathname === '/'}>
         <SLink to='/'>Movies</SLink>
       </Li>
-      <Li>
+      <Li current={pathname === '/tv'}>
         <SLink to='/tv'>TV</SLink>
       </Li>
-      <Li>
+      <Li current={pathname === '/search'}>
         <SLink to='/search'>Search</SLink>
       </Li>
     </Ul>
   </Header>
-);
+));
