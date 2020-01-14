@@ -1,7 +1,9 @@
 import React from 'react';
 
-function App() {
-  return <div className='App'></div>;
-}
+import Router from 'components/Router';
 
-export default App;
+export default () => (
+  <>
+    <Router />
+  </>
+);
