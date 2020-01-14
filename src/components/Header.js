@@ -1,17 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+const Ul = styled.ul`
+  display: flex;
+  &:hover {
+    background-color: blue;
+  }
+`;
 
 export default () => (
   <header>
-    <ul>
+    <Ul>
       <li>
-        <a href='/'>Movies</a>
+        <Link to='/'>Movies</Link>
       </li>
       <li>
-        <a href='/tv'>TV</a>
+        <Link to='/tv'>TV</Link>
       </li>
       <li>
-        <a href='/search'>Search</a>
+        <Link to='/search'>Search</Link>
       </li>
-    </ul>
+    </Ul>
   </header>
 );
