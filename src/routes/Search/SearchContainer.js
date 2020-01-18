@@ -1,21 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
-import SearchPresenter from './SearchPresenter';
+import SearchPresenter from "./SearchPresenter";
+import { moviesApi, tvApi } from "api";
 
 export default () => {
-  const [movieResults, setMovieResults] = useState(null);
-  const [tvResults, setTvResults] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [allSearch, setAllSearch] = useState({
+    movieResults: [],
+    tvResults: [],
+    searchTerm: "",
+    error: [],
+    loading: false
+  });
 
-  return (
-    <SearchPresenter
-      movieResults={movieResults}
-      tvResults={tvResults}
-      searchTerm={searchTerm}
-      error={error}
-      loading={loading}
-    />
-  );
+  const handleSubmit = () => {
+    const { searchTerm } = allSearch;
+    if (searchTerm !== "") {
+      searchByTerm(searchTerm);
+    }
+  };
+
+  const searchByTerm = term => {
+    const { searchTerm } = allSearch;
+    try {
+      const getSearchResult = async () => {
+        const [
+          {
+            data: { results: movieResults }
+          },
+          {
+            data: { results: tvResults }
+          }
+        ] = await Promise.all([
+          moviesApi.search(searchTerm),
+          tvApi.search(searchTerm)
+        ]);
+        setAllSearch({ ...allSearch, movieResults, tvResults });
+      };
+      setAllSearch({ ...allSearch, loading: true });
+      getSearchResult();
+    } catch {
+      setAllSearch({ ...allSearch, error: ["Can't find results."] });
+    } finally {
+      setAllSearch({ ...allSearch, loading: false });
+    }
+  };
+
+  return <SearchPresenter allSearch={allSearch} handleSubmit={handleSubmit} />;
 };
