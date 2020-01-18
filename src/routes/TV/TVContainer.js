@@ -14,7 +14,7 @@ export default () => {
 
   useEffect(() => {
     try {
-      const getMoviesInfo = async () => {
+      const getTVInfo = async () => {
         const [
           {
             data: { results: topRated }
@@ -32,7 +32,7 @@ export default () => {
         ]);
         setAllTV({ ...allTV, topRated, popular, airingToday });
       };
-      getMoviesInfo();
+      getTVInfo();
     } catch {
       setAllTV({ ...allTV, error: ["Can't find TV information."] });
     } finally {
