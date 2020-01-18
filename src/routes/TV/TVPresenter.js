@@ -1,1 +1,4 @@
-export default () => 'TV';
+export default ({ allTV }) => {
+  console.log(allTV);
+  return "TV";
+};
