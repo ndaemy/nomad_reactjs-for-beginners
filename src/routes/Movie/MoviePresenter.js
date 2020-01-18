@@ -1,4 +1,4 @@
-export default ({ nowPlaying, upcoming, popular, error, loading }) => {
-  console.log(nowPlaying, upcoming, popular, error, loading);
-  return 'Movie';
+export default ({ allMovies }) => {
+  console.log(allMovies);
+  return "Movie";
 };

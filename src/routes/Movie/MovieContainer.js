@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import HomePresenter from './MoviePresenter';
-import { moviesApi } from 'api';
+import MoviePresenter from "./MoviePresenter";
+import { moviesApi } from "api";
 
 export default () => {
-  const [nowPlaying, setNowPlaying] = useState(null);
-  const [upcoming, setUpcoming] = useState(null);
-  const [popular, setPopular] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [allMovies, setAllMovies] = useState({
+    nowPlaying: [],
+    upcoming: [],
+    popular: [],
+    error: [],
+    loading: true
+  });
 
   useEffect(() => {
     try {
@@ -28,26 +30,15 @@ export default () => {
           moviesApi.upcoming(),
           moviesApi.popular()
         ]);
-        setNowPlaying(nowPlaying);
-        setUpcoming(upcoming);
-        setPopular(popular);
+        setAllMovies({ ...allMovies, nowPlaying, upcoming, popular });
       };
-
       getMoviesInfo();
     } catch {
-      setError("Can't find movies information.");
+      setAllMovies({ ...allMovies, error: ["Can't find movies information."] });
     } finally {
-      setLoading(false);
+      setAllMovies({ ...allMovies, loading: false });
     }
   }, []);
 
-  return (
-    <HomePresenter
-      nowPlaying={nowPlaying}
-      upcoming={upcoming}
-      popular={popular}
-      error={error}
-      loading={loading}
-    />
-  );
+  return <MoviePresenter allMovies={allMovies} />;
 };
