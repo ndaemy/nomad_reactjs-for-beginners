@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 
+import Header from 'components/Header';
 import Home from 'routes/Home';
 import TV from 'routes/TV';
 import Search from 'routes/Search';
@@ -13,6 +14,7 @@ import Search from 'routes/Search';
 export default function AppRouter() {
   return (
     <Router>
+      <Header />
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/tv' component={TV} />
