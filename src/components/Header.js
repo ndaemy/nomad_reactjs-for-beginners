@@ -39,7 +39,6 @@ const SLink = styled(Link)`
 
 export default function Header() {
   const { pathname } = useLocation();
-  console.log(pathname);
   return (
     <SHeader>
       <List>
