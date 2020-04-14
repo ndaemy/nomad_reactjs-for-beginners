@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Loader from 'components/Loader';
 import Section from 'components/Section';
+import Message from 'components/Message';
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -23,24 +24,25 @@ export default function TVPresenter({
       {topRated && topRated.length > 0 && (
         <Section title='Top Rated Shows'>
           {topRated.map(show => (
-            <span>{show.name}</span>
+            <span key={show.id}>{show.name}</span>
           ))}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title='Popular Shows'>
           {popular.map(show => (
-            <span>{show.name}</span>
+            <span key={show.id}>{show.name}</span>
           ))}
         </Section>
       )}
       {airingToday && airingToday.length > 0 && (
         <Section title='Airing Today'>
           {airingToday.map(show => (
-            <span>{show.name}</span>
+            <span key={show.id}>{show.name}</span>
           ))}
         </Section>
       )}
+      {error && <Message color='#e74c3c' text={error} />}
     </Container>
   );
 }
