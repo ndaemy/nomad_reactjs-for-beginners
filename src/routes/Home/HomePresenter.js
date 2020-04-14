@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Loader from 'components/Loader';
 import Section from 'components/Section';
 
 const Container = styled.div`
@@ -15,21 +16,29 @@ export default function HomePresenter({
   loading,
   error,
 }) {
-  return loading ? null : (
+  return loading ? (
+    <Loader />
+  ) : (
     <Container>
       {nowPlaying && nowPlaying.length > 0 && (
         <Section title='Now Playing Movies'>
-          {nowPlaying.map(movie => movie.title)}
+          {nowPlaying.map(movie => (
+            <span key={movie.id}>{movie.title}</span>
+          ))}
         </Section>
       )}
       {upcoming && upcoming.length > 0 && (
         <Section title='Upcoming Movies'>
-          {upcoming.map(movie => movie.title)}
+          {upcoming.map(movie => (
+            <span key={movie.id}>{movie.title}</span>
+          ))}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title='Popular Movies'>
-          {popular.map(movie => movie.title)}
+          {popular.map(movie => (
+            <span key={movie.id}>{movie.title}</span>
+          ))}
         </Section>
       )}
     </Container>
