@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Loader from 'components/Loader';
 import Section from 'components/Section';
+import Poster from 'components/Poster';
 import Message from 'components/Message';
 
 const Container = styled.div`
@@ -24,21 +25,42 @@ export default function TVPresenter({
       {topRated && topRated.length > 0 && (
         <Section title='Top Rated Shows'>
           {topRated.map(show => (
-            <span key={show.id}>{show.name}</span>
+            <Poster
+              key={show.id}
+              id={show.id}
+              imageUrl={show.poster_path}
+              title={show.original_name}
+              rating={show.vote_average}
+              year={show.first_air_date && show.first_air_date.substring(0, 4)}
+            />
           ))}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title='Popular Shows'>
           {popular.map(show => (
-            <span key={show.id}>{show.name}</span>
+            <Poster
+              key={show.id}
+              id={show.id}
+              imageUrl={show.poster_path}
+              title={show.original_name}
+              rating={show.vote_average}
+              year={show.first_air_date && show.first_air_date.substring(0, 4)}
+            />
           ))}
         </Section>
       )}
       {airingToday && airingToday.length > 0 && (
         <Section title='Airing Today'>
           {airingToday.map(show => (
-            <span key={show.id}>{show.name}</span>
+            <Poster
+              key={show.id}
+              id={show.id}
+              imageUrl={show.poster_path}
+              title={show.original_name}
+              rating={show.vote_average}
+              year={show.first_air_date && show.first_air_date.substring(0, 4)}
+            />
           ))}
         </Section>
       )}
