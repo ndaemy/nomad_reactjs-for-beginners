@@ -6,7 +6,7 @@ import Loader from 'components/Loader';
 import Section from 'components/Section';
 
 const Container = styled.div`
-  padding: 0px 10px;
+  padding: 0px 20px;
 `;
 
 export default function TVPresenter({

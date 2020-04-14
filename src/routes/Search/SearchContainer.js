@@ -11,9 +11,18 @@ export default class SearchContainer extends Component {
     error: null,
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
+
     const { term } = this.state;
     if (term !== '') this.searchByTerm();
+  };
+
+  updateTerm = e => {
+    const {
+      target: { value },
+    } = e;
+    this.setState({ term: value });
   };
 
   searchByTerm = async () => {
@@ -36,6 +45,12 @@ export default class SearchContainer extends Component {
   };
 
   render() {
-    return <SearchPresenter {...this.state} handleSubmit={this.handleSubmit} />;
+    return (
+      <SearchPresenter
+        {...this.state}
+        handleSubmit={this.handleSubmit}
+        updateTerm={this.updateTerm}
+      />
+    );
   }
 }
