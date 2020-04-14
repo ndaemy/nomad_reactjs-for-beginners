@@ -26,24 +26,24 @@ export default class DetailContainer extends Component {
     } = this.props;
     const { isMovie } = this.state;
 
-    let result;
     try {
       if (isMovie) {
-        const request = await movieApi.detail(id);
-        result = request.data;
+        const { data: result } = await movieApi.detail(id);
+        this.setState({ result });
       } else {
-        const request = await tvApi.detail(id);
-        result = request.data;
+        const { data: result } = await tvApi.detail(id);
+        this.setState({ result });
       }
     } catch {
       this.setState({ error: "Can't find information." });
     } finally {
-      this.setState({ result, loading: false });
+      this.setState({ loading: false });
     }
   }
 
   render() {
     const { result, loading, error } = this.state;
+    console.log(this.state);
 
     return <DetailPresenter result={result} loading={loading} error={error} />;
   }
