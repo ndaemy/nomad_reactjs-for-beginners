@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import Loader from 'components/Loader';
 import Section from 'components/Section';
+import Poster from 'components/Poster';
 import Message from 'components/Message';
 
 const Container = styled.div`
@@ -24,21 +25,21 @@ export default function HomePresenter({
       {nowPlaying && nowPlaying.length > 0 && (
         <Section title='Now Playing Movies'>
           {nowPlaying.map(movie => (
-            <span key={movie.id}>{movie.title}</span>
+            <Poster />
           ))}
         </Section>
       )}
       {upcoming && upcoming.length > 0 && (
         <Section title='Upcoming Movies'>
           {upcoming.map(movie => (
-            <span key={movie.id}>{movie.title}</span>
+            <Poster />
           ))}
         </Section>
       )}
       {popular && popular.length > 0 && (
         <Section title='Popular Movies'>
           {popular.map(movie => (
-            <span key={movie.id}>{movie.title}</span>
+            <Poster />
           ))}
         </Section>
       )}
