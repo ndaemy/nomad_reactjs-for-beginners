@@ -42,9 +42,6 @@ export default class DetailContainer extends Component {
   }
 
   render() {
-    const { result, loading, error } = this.state;
-    console.log(this.state);
-
-    return <DetailPresenter result={result} loading={loading} error={error} />;
+    return <DetailPresenter {...this.state} />;
   }
 }

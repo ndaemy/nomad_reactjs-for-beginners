@@ -39,16 +39,6 @@ export default class HomeContainer extends Component {
   }
 
   render() {
-    const { nowPlaying, upcoming, popular, loading, error } = this.state;
-
-    return (
-      <HomePresenter
-        nowPlaying={nowPlaying}
-        upcoming={upcoming}
-        popular={popular}
-        loading={loading}
-        error={error}
-      />
-    );
+    return <HomePresenter {...this.state} />;
   }
 }

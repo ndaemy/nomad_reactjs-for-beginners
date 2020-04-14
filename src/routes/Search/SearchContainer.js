@@ -36,17 +36,6 @@ export default class SearchContainer extends Component {
   };
 
   render() {
-    const { movieResults, tvResults, term, loading, error } = this.state;
-
-    return (
-      <SearchPresenter
-        movieResults={movieResults}
-        tvResults={tvResults}
-        term={term}
-        loading={loading}
-        error={error}
-        handleSubmit={this.handleSubmit}
-      />
-    );
+    return <SearchPresenter {...this.state} handleSubmit={this.handleSubmit} />;
   }
 }

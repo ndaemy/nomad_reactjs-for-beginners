@@ -32,16 +32,6 @@ export default class TVContainer extends Component {
   }
 
   render() {
-    const { popular, topRated, airingToday, loading, error } = this.state;
-
-    return (
-      <TVPresenter
-        popular={popular}
-        topRated={topRated}
-        airingToday={airingToday}
-        loading={loading}
-        error={error}
-      />
-    );
+    return <TVPresenter {...this.state} />;
   }
 }
