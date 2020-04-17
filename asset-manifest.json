@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/nomad_reactjs-for-beginners/static/js/main.fa907afd.chunk.js",
+    "main.js.map": "/nomad_reactjs-for-beginners/static/js/main.fa907afd.chunk.js.map",
+    "runtime-main.js": "/nomad_reactjs-for-beginners/static/js/runtime-main.935ddc3b.js",
+    "runtime-main.js.map": "/nomad_reactjs-for-beginners/static/js/runtime-main.935ddc3b.js.map",
+    "static/js/2.e56a4ed3.chunk.js": "/nomad_reactjs-for-beginners/static/js/2.e56a4ed3.chunk.js",
+    "static/js/2.e56a4ed3.chunk.js.map": "/nomad_reactjs-for-beginners/static/js/2.e56a4ed3.chunk.js.map",
+    "index.html": "/nomad_reactjs-for-beginners/index.html",
+    "precache-manifest.c5d0eda8d21f1350d4ff124ec7943187.js": "/nomad_reactjs-for-beginners/precache-manifest.c5d0eda8d21f1350d4ff124ec7943187.js",
+    "service-worker.js": "/nomad_reactjs-for-beginners/service-worker.js",
+    "static/js/2.e56a4ed3.chunk.js.LICENSE.txt": "/nomad_reactjs-for-beginners/static/js/2.e56a4ed3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.935ddc3b.js",
+    "static/js/2.e56a4ed3.chunk.js",
+    "static/js/main.fa907afd.chunk.js"
+  ]
+}
