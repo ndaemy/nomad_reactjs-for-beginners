@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import Loader from 'components/Loader';
 import Section from 'components/Section';
@@ -8,7 +9,7 @@ import Poster from 'components/Poster';
 import Message from 'components/Message';
 
 const Container = styled.div`
-  padding: 0px 20px;
+  padding: 20px 20px 0;
 `;
 
 const Form = styled.form`
@@ -31,61 +32,67 @@ export default function SearchPresenter({
   updateTerm,
 }) {
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          placeholder='Search Movies or TV Shows...'
-          value={term}
-          onChange={updateTerm}
-        />
-      </Form>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          {movieResults && movieResults.length > 0 && (
-            <Section title='Movie Results'>
-              {movieResults.map(movie => (
-                <Poster
-                  key={movie.id}
-                  id={movie.id}
-                  imageUrl={movie.poster_path}
-                  title={movie.original_title}
-                  rating={movie.vote_average}
-                  year={
-                    movie.release_date && movie.release_date.substring(0, 4)
-                  }
-                  isMovie={true}
-                />
-              ))}
-            </Section>
-          )}
-          {tvResults && tvResults.length > 0 && (
-            <Section title='TV Show Results'>
-              {tvResults.map(show => (
-                <Poster
-                  key={show.id}
-                  id={show.id}
-                  imageUrl={show.poster_path}
-                  title={show.original_name}
-                  rating={show.vote_average}
-                  year={
-                    show.first_air_date && show.first_air_date.substring(0, 4)
-                  }
-                />
-              ))}
-            </Section>
-          )}
-        </>
-      )}
-      {error && <Message color='#e74c3c' text={error} />}
-      {movieResults &&
-        tvResults &&
-        movieResults.length === 0 &&
-        tvResults.length === 0 && (
-          <Message color='#95a5a6' text='Nothing found' />
+    <>
+      <Helmet>
+        <title>Search | Nomflix</title>
+      </Helmet>
+
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            placeholder='Search Movies or TV Shows...'
+            value={term}
+            onChange={updateTerm}
+          />
+        </Form>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            {movieResults && movieResults.length > 0 && (
+              <Section title='Movie Results'>
+                {movieResults.map(movie => (
+                  <Poster
+                    key={movie.id}
+                    id={movie.id}
+                    imageUrl={movie.poster_path}
+                    title={movie.original_title}
+                    rating={movie.vote_average}
+                    year={
+                      movie.release_date && movie.release_date.substring(0, 4)
+                    }
+                    isMovie={true}
+                  />
+                ))}
+              </Section>
+            )}
+            {tvResults && tvResults.length > 0 && (
+              <Section title='TV Show Results'>
+                {tvResults.map(show => (
+                  <Poster
+                    key={show.id}
+                    id={show.id}
+                    imageUrl={show.poster_path}
+                    title={show.original_name}
+                    rating={show.vote_average}
+                    year={
+                      show.first_air_date && show.first_air_date.substring(0, 4)
+                    }
+                  />
+                ))}
+              </Section>
+            )}
+          </>
         )}
-    </Container>
+        {error && <Message color='#e74c3c' text={error} />}
+        {movieResults &&
+          tvResults &&
+          movieResults.length === 0 &&
+          tvResults.length === 0 && (
+            <Message color='#95a5a6' text='Nothing found' />
+          )}
+      </Container>
+    </>
   );
 }
 
