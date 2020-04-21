@@ -25,7 +25,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "yarn run build"
   },
-  "homepage": "https://yuyaebean.github.io/nomad_reactjs-for-beginners",
+  "homepage": "https://nomad-react.netlify.app",
   "eslintConfig": {
     "extends": "react-app"
   },

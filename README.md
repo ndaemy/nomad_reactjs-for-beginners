@@ -23,3 +23,7 @@ Learning React and ES6 by building a Movie Discovery App.
 ## Configuration (.env file)
 
 - REACT_APP_TMDB_API_KEY: The Movie Database API Key
+
+# Preview
+
+Try it on [netlify](https://nomad-react.netlify.app/#/)
